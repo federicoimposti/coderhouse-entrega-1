@@ -1,0 +1,16 @@
+.containerNav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.menuMain {
+    display:flex;
+    justify-content: space-around;
+    font-weight: 500;
+}
+
+.menuMain p {
+    padding: 0 5px;
+}
