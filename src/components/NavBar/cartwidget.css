@@ -1,0 +1,14 @@
+.cart-widget {
+    background: black;
+    color: white;
+    padding: 10px 12px;
+    border-radius: 50%;
+    font-size: 0.9rem;
+    margin-right:60px;
+}
+
+@media (min-width:768px){
+    .cart-widget {
+        margin:0;
+    }
+}

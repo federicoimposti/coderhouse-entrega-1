@@ -1,4 +1,5 @@
 import React from 'react'
+import {CartWidget} from './CartWidget'
 import './navbar.css'
 import logo from '../../assets/img/logo.png';
 
@@ -16,6 +17,7 @@ export const NavBar = () => {
                     <a href="/">Preguntas frecuentes</a>
                     <a href="/">Contacto</a>
                 </nav>
+                <CartWidget />
             </div>
         </div>
     )
