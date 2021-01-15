@@ -4,13 +4,13 @@ import {ItemCountBeta} from '../ItemCountBeta/ItemCountBeta'
 
 import './itemlistcontainer.css'
 
-export const ItemListContainer = ({greeting}) => {
+export const ItemListContainer = () => {
     return (
         <>
             <div className="main-container">
                 <div>
-                <ItemCount stock="10" initial="1" />
-                <ItemCountBeta stock="14" initial="3" />
+                <ItemCount stock="5" initial="1" />
+                <ItemCountBeta stock="4" initial="1" />
                 </div>
             </div>
             

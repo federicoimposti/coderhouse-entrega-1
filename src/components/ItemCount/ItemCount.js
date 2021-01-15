@@ -12,7 +12,7 @@ export const ItemCount = ({stock, initial}) => {
         } else {
             swal({
                 title: "Stock no disponible",
-                text: `Tenemos ${cantidadElegida} artículos disponibles`,
+                text: `Tenemos ${stock} artículos disponibles`,
                 icon: "error",
             });
         }
@@ -31,11 +31,25 @@ export const ItemCount = ({stock, initial}) => {
     }
 
     const OnAdd = () => {
-        swal({
-            title: "Elementos agregados a tu carrito",
-            text: `Agregaste ${cantidadElegida} artículos`,
-            icon: "success",
-        });
+        if(cantidadElegida > stock){
+            swal({
+                title: "Stock no disponible",
+                text: `Tenemos ${stock} artículos disponibles`,
+                icon: "error",
+            });
+        } else if(cantidadElegida < initial) {
+            swal({
+                title: "Error",
+                text: `Cantidad mínima: ${initial} artículo/s`,
+                icon: "error",
+            });
+        } else {
+            swal({
+                title: "Elementos agregados a tu carrito",
+                text: `Agregaste ${cantidadElegida} artículo/s`,
+                icon: "success",
+            });
+        }
     }
 
     return (

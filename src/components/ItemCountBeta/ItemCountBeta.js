@@ -18,7 +18,7 @@ export const ItemCountBeta = ({stock, initial}) => {
         if(cantidadElegida > stock){
             swal({
                 title: "Stock no disponible",
-                text: `Tenemos ${cantidadElegida} artículos disponibles`,
+                text: `Tenemos ${stock} artículos disponibles`,
                 icon: "error",
             });
         } else if(cantidadElegida < initial) {
