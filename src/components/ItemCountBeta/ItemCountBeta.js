@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import swal from 'sweetalert';
 import './itemcountbeta.css'
 
 export const ItemCountBeta = ({stock, initial}) => {
@@ -14,8 +15,24 @@ export const ItemCountBeta = ({stock, initial}) => {
     }
 
     const OnAdd = () => {
-        if((cantidadElegida < stock) && (cantidadElegida >= initial)){
-            alert(`Cantidad elegida: ${cantidadElegida}`);
+        if(cantidadElegida > stock){
+            swal({
+                title: "Stock no disponible",
+                text: `Tenemos ${cantidadElegida} artículos disponibles`,
+                icon: "error",
+            });
+        } else if(cantidadElegida < initial) {
+            swal({
+                title: "Error",
+                text: `Cantidad mínima: ${initial} artículo/s`,
+                icon: "error",
+            });
+        } else {
+            swal({
+                title: "Elementos agregados a tu carrito",
+                text: `Agregaste ${cantidadElegida} artículo/s`,
+                icon: "success",
+            });
         }
     }
 
