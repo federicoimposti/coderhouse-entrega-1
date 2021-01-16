@@ -8,7 +8,7 @@ export const ItemListContainer = () => {
         <>
             <div className="main-container">
                 <div>
-                    <ItemCount stock="5" initial="1" />
+                    <ItemCount stock="2" initial="1" />
                 </div>
             </div>
             
