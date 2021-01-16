@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import swal from 'sweetalert';
+import productoImg from '../../assets/img/img1.jpg';
 import './itemcount.css'
 
 export const ItemCount = ({stock, initial}) => {
@@ -11,8 +12,8 @@ export const ItemCount = ({stock, initial}) => {
             setCantidad(cantidadElegida + 1);
         } else {
             swal({
-                title: "Stock no disponible",
-                text: `Tenemos ${stock} artículos disponibles`,
+                title: "Sin stock",
+                text: `Tenemos ${stock} artículos disponibles 😔`,
                 icon: "error",
             });
         }
@@ -24,7 +25,7 @@ export const ItemCount = ({stock, initial}) => {
         } else {
             swal({
                 title: "Error",
-                text: `Cantidad mínima: ${initial} Artículo`,
+                text: `Cantidad mínima: ${initial} artículo/s 🤔`,
                 icon: "error",
             });
         }
@@ -33,20 +34,20 @@ export const ItemCount = ({stock, initial}) => {
     const OnAdd = () => {
         if(cantidadElegida > stock){
             swal({
-                title: "Stock no disponible",
-                text: `Tenemos ${stock} artículos disponibles`,
+                title: "Sin stock",
+                text: `Tenemos ${stock} artículos disponibles 😔`,
                 icon: "error",
             });
         } else if(cantidadElegida < initial) {
             swal({
                 title: "Error",
-                text: `Cantidad mínima: ${initial} artículo/s`,
+                text: `Cantidad mínima: ${initial} artículo/s 🤔`,
                 icon: "error",
             });
         } else {
             swal({
                 title: "Elementos agregados a tu carrito",
-                text: `Agregaste ${cantidadElegida} artículo/s`,
+                text: `Agregaste ${cantidadElegida} artículo/s 😀`,
                 icon: "success",
             });
         }
@@ -55,6 +56,12 @@ export const ItemCount = ({stock, initial}) => {
     return (
             <>
                 <div class="main">
+                    <div class="producto">
+                    <img src={productoImg} className="destacada" alt="producto" />
+                    <div class="descripcion-producto">
+                        <h4>Remera React</h4>
+                        <p>Para amantes de esta tecnología que cambió el mundo. Remera especial para vos que te gusta programar 🤟</p>
+                    </div>
                     <div className="item-count">
                         <button type="button" value="-" onClick={restarCantidad}>-</button>
                         <input value={cantidadElegida} size="1" />
@@ -62,6 +69,7 @@ export const ItemCount = ({stock, initial}) => {
                     </div>
                     <div class="add-to-cart">
                         <button onClick={OnAdd}>Agregar al carrito</button>
+                    </div>
                     </div>
                 </div>
             </>
