@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import swal from 'sweetalert';
-import productoImg from '../../assets/img/img1.jpg';
 import './itemcount.css'
 
 export const ItemCount = ({stock, initial}) => {
@@ -55,22 +54,13 @@ export const ItemCount = ({stock, initial}) => {
 
     return (
             <>
-                <div class="main">
-                    <div class="producto">
-                    <img src={productoImg} className="destacada" alt="producto" />
-                    <div class="descripcion-producto">
-                        <h4>Remera React</h4>
-                        <p>Para amantes de esta tecnología que cambió el mundo. Remera especial para vos que te gusta programar <span>🤟</span></p>
-                    </div>
-                    <div className="item-count">
-                        <button type="button" value="-" onClick={restarCantidad}>-</button>
-                        <input value={cantidadElegida} size="1" />
-                        <button type="button" value="+" onClick={sumarCantidad}>+</button>
-                    </div>
-                    <div class="add-to-cart">
-                        <button onClick={OnAdd}>Agregar al carrito</button>
-                    </div>
-                    </div>
+                <div className="item-count">
+                    <button type="button" value="-" onClick={restarCantidad}>-</button>
+                    <input value={cantidadElegida} size="1" />
+                    <button type="button" value="+" onClick={sumarCantidad}>+</button>
+                </div>
+                <div class="add-to-cart">
+                    <button onClick={OnAdd}>Agregar al carrito</button>
                 </div>
             </>
     )
