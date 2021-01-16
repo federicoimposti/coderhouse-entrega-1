@@ -60,7 +60,7 @@ export const ItemCount = ({stock, initial}) => {
                     <img src={productoImg} className="destacada" alt="producto" />
                     <div class="descripcion-producto">
                         <h4>Remera React</h4>
-                        <p>Para amantes de esta tecnología que cambió el mundo. Remera especial para vos que te gusta programar 🤟</p>
+                        <p>Para amantes de esta tecnología que cambió el mundo. Remera especial para vos que te gusta programar <span>🤟</span></p>
                     </div>
                     <div className="item-count">
                         <button type="button" value="-" onClick={restarCantidad}>-</button>
