@@ -2,6 +2,7 @@ import './App.css';
 import { NavBar } from './components/NavBar/NavBar'
 import { NavBarMobile } from './components/NavBarMobile/NavBarMobile'
 import {ItemListContainer} from './components/ItemListContainer/ItemListContainer'
+import {ItemDetailContainer} from './components/ItemDetailContainer/ItemDetailContainer'
 
 function App() {
   return (
@@ -9,7 +10,8 @@ function App() {
       <NavBarMobile pageWrapId={"page-wrap"} outerContainerId={"App"} />
       <NavBar />
       <div id="page-wrap">
-        <ItemListContainer greeting={'Aquí se mostrará el catálogo'}/>
+        {/*<ItemListContainer />*/}
+        <ItemDetailContainer />
       </div>
     </div>
   );

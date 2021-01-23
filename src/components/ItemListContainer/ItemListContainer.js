@@ -34,7 +34,7 @@ export const ItemListContainer = () => {
         const itemsLoad = new Promise((resolve, reject) => {
             setTimeout(() => {
                 resolve(productsDB);
-            }, 3000);
+            }, 2000);
         });
     
         itemsLoad.then((response) => {
