@@ -75,3 +75,12 @@
     background: rgba(0, 0, 0, 0.3);
   }
   
+  .menu-item,
+  .menu-item a {
+    color:white;
+    text-decoration: none;
+  }
+
+  .menu-item a {
+    border:none;
+  }

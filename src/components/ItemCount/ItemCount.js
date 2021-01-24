@@ -55,11 +55,11 @@ export const ItemCount = ({stock, initial}) => {
     return (
             <>
                 <div className="item-count">
-                    <button type="button" value="-" onClick={restarCantidad}>-</button>
-                    <input value={cantidadElegida} size="1" />
-                    <button type="button" value="+" onClick={sumarCantidad}>+</button>
+                    <button type="button" defaultValue="-" onClick={restarCantidad}>-</button>
+                    <span className="itemscount" size="1">{cantidadElegida}</span>
+                    <button type="button" defaultValue="+" onClick={sumarCantidad}>+</button>
                 </div>
-                <div class="add-to-cart">
+                <div className="add-to-cart">
                     <button onClick={OnAdd}>Agregar al carrito</button>
                 </div>
             </>
