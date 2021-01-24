@@ -16,7 +16,9 @@ export const ItemDetail = ({productData}) => {
                     <p className="item-description">{productData.description}</p>
                     <ItemCount stock="5" initial="1" />
                 </div>
+                
             </div>
+            
         </>
     )
 }
