@@ -9,7 +9,7 @@ export const NavBarMobile = props => {
     <Menu {...props}>
       <li className="menu-item"><Link to={`/`}>Home</Link></li>
       <li className="menu-item"><Link to={`/category/geek`}>Colección Geek</Link></li>
-      <li className="menu-item"><Link to={`/category/opensource`}>Colección Open Source</Link></li>
+      <li className="menu-item"><Link to={`/category/open-source`}>Colección Open Source</Link></li>
       <li className="menu-item"><Link to={`/item/1`}>Modelo React 💙</Link></li>
       <li className="menu-item">Preguntas frecuentes</li>
       <li className="menu-item">Contacto</li>
