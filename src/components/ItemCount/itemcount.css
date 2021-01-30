@@ -1,8 +1,4 @@
-.item-count input  {
-    text-align:center;
-}
-
-.item-count input,
+.item-count span,
 .item-count button {
     margin: 0 5px;
 }
@@ -21,8 +17,30 @@
     justify-content: center;
 }
 
-.item-count input {
+.terminar-compra {
+    text-align: center;
+    border: 1px black solid;
+    padding: 6px 8px;
+    margin-top: 10px;
+    box-shadow: 5px 4px gray;
+    transition: 0.3s all ease-in-out;
+    cursor: pointer;
+}
+
+.terminar-compra:hover {
+    box-shadow: none;
+    transform: translateX(2px) translateY(3px);
+}
+
+.item-count span.itemscount {
     width: 25px;
+    text-align:center;
+    border:1px black solid;
+    border-radius: 3px;
+    padding: 3px;
+    position: relative;
+    top: auto;
+    right: auto;
 }
 
 .add-to-cart {
@@ -32,7 +50,6 @@
 .add-to-cart button {
     width: 100%;
 }
-
 
 
 .add-to-cart button {

@@ -42,8 +42,10 @@
     }
 }
 
-.menuMain a {
+.containerNav li,
+.containerNav a {
     padding: 0 8px;
     color: #000;
     text-decoration: none;
+    list-style: none;
 }

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import swal from 'sweetalert';
 import './itemcount.css'
 
-export const ItemCount = ({stock, initial}) => {
+export const ItemCount = ({stock, initial, agregarCarrito}) => {
     const [cantidad, setCantidad] = useState(initial);
     const cantidadElegida = parseInt(cantidad);
 
@@ -30,37 +30,15 @@ export const ItemCount = ({stock, initial}) => {
         }
     }
 
-    const OnAdd = () => {
-        if(cantidadElegida > stock){
-            swal({
-                title: "Sin stock",
-                text: `Tenemos ${stock} artículos disponibles 😔`,
-                icon: "error",
-            });
-        } else if(cantidadElegida < initial) {
-            swal({
-                title: "Error",
-                text: `Cantidad mínima: ${initial} artículo/s 🤔`,
-                icon: "error",
-            });
-        } else {
-            swal({
-                title: "Elementos agregados a tu carrito",
-                text: `Agregaste ${cantidadElegida} artículo/s 😀`,
-                icon: "success",
-            });
-        }
-    }
-
     return (
             <>
                 <div className="item-count">
-                    <button type="button" value="-" onClick={restarCantidad}>-</button>
-                    <input value={cantidadElegida} size="1" />
-                    <button type="button" value="+" onClick={sumarCantidad}>+</button>
+                    <button type="button" defaultValue="-" onClick={restarCantidad}>-</button>
+                    <span className="itemscount" size="1">{cantidadElegida}</span>
+                    <button type="button" defaultValue="+" onClick={sumarCantidad}>+</button>
                 </div>
-                <div class="add-to-cart">
-                    <button onClick={OnAdd}>Agregar al carrito</button>
+                <div className="add-to-cart">
+                    <button onClick={() => {agregarCarrito(cantidadElegida)}}>Agregar al carrito</button>
                 </div>
             </>
     )
