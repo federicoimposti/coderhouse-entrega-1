@@ -4,13 +4,13 @@ import { NavBar } from './components/NavBar/NavBar'
 import { NavBarMobile } from './components/NavBarMobile/NavBarMobile'
 import { ItemListContainer } from './components/ItemListContainer/ItemListContainer'
 import { ItemDetailContainer } from './components/ItemDetailContainer/ItemDetailContainer'
-import { CartContext } from './context/CartContext'
+import { CartContextContainer } from './context/CartContext'
 import { Cart } from './components/Cart/Cart'
 
 function App() {
   return (
     <BrowserRouter>
-      <CartContext.Provider value="">
+      <CartContextContainer>
         <div className="App">
           <NavBarMobile pageWrapId={"page-wrap"} outerContainerId={"App"} />
           <NavBar />
@@ -31,7 +31,7 @@ function App() {
             </Switch>
           </div>
         </div>
-      </CartContext.Provider>
+      </CartContextContainer>
     </BrowserRouter>
   );
 }

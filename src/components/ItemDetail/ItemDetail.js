@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+import { CartContext } from '../../context/CartContext'
 import swal from 'sweetalert';
 import { Link } from 'react-router-dom'
 import {ItemCount} from '../ItemCount/ItemCount'
@@ -8,6 +9,8 @@ export const ItemDetail = ({productData}) => {
 
     const [articuloAgregado, setArticuloAgregado] = useState(0);
     const [validar, setValidar] = useState(false);
+
+    const [carrito, setCarrito, addItem, removeItems] = useContext(CartContext);
 
     const onAdd = ((CantidadArticulos) => {
         if(CantidadArticulos > productData.stock){
@@ -22,34 +25,28 @@ export const ItemDetail = ({productData}) => {
                 text: `Cantidad mínima: ${productData.minQty} artículo/s 🤔`,
                 icon: "error",
             });
-        } else if ((CantidadArticulos + articuloAgregado) <= productData.stock){
+        } else {
             swal({
                 title: "Elementos agregados a tu carrito",
                 text: `Agregaste ${CantidadArticulos} artículo/s 😀`,
                 icon: "success",
             }).then(() => {
-                setArticuloAgregado(CantidadArticulos + articuloAgregado);
                 setValidar(true);
-                
+                const cartItemObj = {
+                    item: productData.id,
+                    cantidad: CantidadArticulos,
+                    stock: productData.stock,
+                    title: productData.title,
+                    pictureUrl: productData.pictureUrl
+                }
+                addItem(cartItemObj);
             })
-        } else {
-            swal({
-                title: "Sin stock",
-                text: `Tenemos ${productData.stock} artículos disponibles y añadiste ${articuloAgregado} a tu carrito.`,
-                icon: "error",
-            });
         }
     })
 
     useEffect(() => {
-        if(articuloAgregado){
-        swal({
-            title: "Artículos en carrito",
-            text: `Tenes ${articuloAgregado} artículo/s en tu carrito 😀`,
-            icon: "warning",
-        })
-    }
-    },[articuloAgregado]);
+        
+    },[])
 
     return (
         <>

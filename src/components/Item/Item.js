@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+import { CartContext } from '../../context/CartContext'
 import swal from 'sweetalert';
 import { Link } from 'react-router-dom'
 import {ItemCount} from '../ItemCount/ItemCount'
@@ -8,6 +9,8 @@ export const Item = ({item}) => {
 
     const [articuloAgregado, setArticuloAgregado] = useState(0);
     const [validar, setValidar] = useState(false);
+    
+    const [carrito, setCarrito, addItem] = useContext(CartContext);
 
     const onAdd = ((CantidadArticulos) => {
         if(CantidadArticulos > item.stock){
@@ -28,9 +31,17 @@ export const Item = ({item}) => {
                 text: `Agregaste ${CantidadArticulos} artículo/s 😀`,
                 icon: "success",
             }).then(() => {
-                setArticuloAgregado(CantidadArticulos + articuloAgregado);
                 setValidar(true);
-                
+
+                const cartItemObj = {
+                    item: item.id,
+                    cantidad: CantidadArticulos,
+                    stock: item.stock,
+                    title: item.title,
+                    pictureUrl: item.pictureUrl
+                }
+
+                addItem(cartItemObj);
             })
         } else {
             swal({
@@ -40,16 +51,6 @@ export const Item = ({item}) => {
             });
         }
     })
-
-    useEffect(() => {
-        if(articuloAgregado){
-        swal({
-            title: "Artículos en carrito",
-            text: `Tenes ${articuloAgregado} artículo/s en tu carrito 😀`,
-            icon: "warning",
-        })
-    }
-    },[articuloAgregado]);
 
     return (
         <>

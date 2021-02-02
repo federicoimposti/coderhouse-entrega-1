@@ -5,10 +5,22 @@
     border-radius: 50%;
     font-size: 0.9rem;
     margin-right:60px;
+    position: relative;
 }
 
 @media (min-width:768px){
     .cart-widget {
         margin:0;
     }
+}
+
+.cart-qty {
+    position: absolute;
+    top:-5px;
+    right: -5px;
+    background-color: red;
+    padding: 2px 6px;
+    font-size: 11px;
+    box-sizing: border-box;
+    border-radius: 50%;
 }
