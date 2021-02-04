@@ -1,15 +1,16 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 export const CartContext = React.createContext([]);
 
 export const CartContextContainer = ({defaultValue = [], children}) => {
 
     const [carrito, setCarrito] = useState(defaultValue)
+    const [qtyStock, setQtyStock] = useState()
 
     const addItem = ((cartItemObj) => {
 
         const existe = carrito.some( producto => producto.item === cartItemObj.item  );
-
+        console.log(carrito);
         if(existe){
             const productos = carrito.map( producto => {
                 if( producto.item === cartItemObj.item ) {
@@ -33,9 +34,18 @@ export const CartContextContainer = ({defaultValue = [], children}) => {
     const removeItems = (() => {
         setCarrito(defaultValue)
     })
+
+    const validateQty = ((cartItemObj) => {
+        
+        if(cartItemObj.enCarrito > cartItemObj.stock){
+            return false
+        } else {
+            return  true
+        }
+    })
     
     return(
-        <CartContext.Provider value={[carrito, setCarrito, addItem, removeItems, removeItem]}>
+        <CartContext.Provider value={[carrito, setCarrito, addItem, removeItems, removeItem, validateQty]}>
             {children}
         </CartContext.Provider>
     )

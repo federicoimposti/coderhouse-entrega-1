@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import {ItemList} from '../ItemList/ItemList'
 import './itemlistcontainer.css'
+import { getFirestore } from '../../firebase/index'
 
 const productsDB = [
     {
@@ -35,6 +36,7 @@ const productsDB = [
 export const ItemListContainer = () => {
 
     const [itemsData, setItemsData] = useState([]);
+    const [loader, setLoader] = useState(true);
 
     useEffect(() => {
         const itemsLoad = new Promise((resolve, reject) => {
@@ -45,13 +47,32 @@ export const ItemListContainer = () => {
     
         itemsLoad.then((response) => {
             setItemsData(response);
+            setLoader(false);
         });
+    }, [])
+
+    useEffect(() => {
+        const db = getFirestore();
+        const itemsCollection = db.collection('items');
+        itemsCollection.get().then((querySnapshot) => {
+            if(querySnapshot.size === 0){
+                console.log("No hay resultados");
+            }
+            const itemss = (querySnapshot.docs.map(doc => doc.data()));
+            console.log(itemss)
+        })
     }, [])
 
     return (
         <>
             <div className="main-container">
-                <ItemList productsData={itemsData} />
+                {loader ? 
+                    <div class="spinner">
+                        <div class="cube1"></div>
+                        <div class="cube2"></div>
+                    </div> 
+                        : 
+                <ItemList productsData={itemsData} />}
             </div>
             
         </>

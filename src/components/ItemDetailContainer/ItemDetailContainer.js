@@ -38,6 +38,7 @@ export const ItemDetailContainer = () => {
 
     const [itemData, setItemData] = useState([]);
     const {id} = useParams()
+    const [loader, setLoader] = useState(true);
 
     useEffect(() => {
         const itemLoad = new Promise((resolve, reject) => {
@@ -48,13 +49,20 @@ export const ItemDetailContainer = () => {
     
         itemLoad.then((response) => {
             setItemData(response[id-1]);
+            setLoader(false);
         });
     })
 
     return (
         <>
             <div className="main-container">
-                <ItemDetail productData={itemData} />
+                {loader ? 
+                    <div class="spinner">
+                        <div class="cube1"></div>
+                        <div class="cube2"></div>
+                    </div> 
+                        : 
+                <ItemDetail productData={itemData} />}
             </div>
             
         </>

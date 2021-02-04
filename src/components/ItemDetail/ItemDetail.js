@@ -9,10 +9,20 @@ export const ItemDetail = ({productData}) => {
 
     const [articuloAgregado, setArticuloAgregado] = useState(0);
     const [validar, setValidar] = useState(false);
-
-    const [carrito, setCarrito, addItem, removeItems] = useContext(CartContext);
+    const [carrito, setCarrito, addItem, removeItems, removeItem, validateQty] = useContext(CartContext);
 
     const onAdd = ((CantidadArticulos) => {
+
+        const cartItemObj = {
+            item: productData.id,
+            cantidad: CantidadArticulos,
+            stock: productData.stock,
+            title: productData.title,
+            pictureUrl: productData.pictureUrl,
+            price: productData.price,
+            enCarrito: articuloAgregado + CantidadArticulos
+        }
+
         if(CantidadArticulos > productData.stock){
             swal({
                 title: "Sin stock",
@@ -26,27 +36,25 @@ export const ItemDetail = ({productData}) => {
                 icon: "error",
             });
         } else {
-            swal({
-                title: "Elementos agregados a tu carrito",
-                text: `Agregaste ${CantidadArticulos} artículo/s 😀`,
-                icon: "success",
-            }).then(() => {
-                setValidar(true);
-                const cartItemObj = {
-                    item: productData.id,
-                    cantidad: CantidadArticulos,
-                    stock: productData.stock,
-                    title: productData.title,
-                    pictureUrl: productData.pictureUrl
-                }
+            if(validateQty(cartItemObj)){
+                swal({
+                    title: "Elementos agregados a tu carrito",
+                    text: `Agregaste ${CantidadArticulos} artículo/s 😀`,
+                    icon: "success",
+                }).then(() => {
+                setArticuloAgregado(CantidadArticulos + articuloAgregado);
                 addItem(cartItemObj);
+                setValidar(true);
             })
+            } else {
+                swal({
+                    title: "Sin stock",
+                    text: `Tenemos ${productData.stock} artículos disponibles 😔`,
+                    icon: "error",
+                })
+            }
         }
     })
-
-    useEffect(() => {
-        
-    },[])
 
     return (
         <>

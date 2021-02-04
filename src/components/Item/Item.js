@@ -38,7 +38,8 @@ export const Item = ({item}) => {
                     cantidad: CantidadArticulos,
                     stock: item.stock,
                     title: item.title,
-                    pictureUrl: item.pictureUrl
+                    pictureUrl: item.pictureUrl,
+                    price: item.price
                 }
 
                 addItem(cartItemObj);
