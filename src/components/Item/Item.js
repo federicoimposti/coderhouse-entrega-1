@@ -23,7 +23,6 @@ export const Item = ({item}) => {
             price: item.price,
         }
 
-
         if(CantidadArticulos > item.stock){
             swal({
                 title: "Sin stock",
