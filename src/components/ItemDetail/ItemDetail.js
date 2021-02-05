@@ -9,7 +9,7 @@ export const ItemDetail = ({productData}) => {
 
     const [articuloAgregado, setArticuloAgregado] = useState(0);
     const [validar, setValidar] = useState(false);
-    const [carrito, setCarrito, addItem, removeItems, removeItem, validateQty] = useContext(CartContext);
+    const [carrito, setCarrito, addItem, removeItems, removeItem] = useContext(CartContext);
 
     const onAdd = ((CantidadArticulos) => {
 
@@ -20,7 +20,6 @@ export const ItemDetail = ({productData}) => {
             title: productData.title,
             pictureUrl: productData.pictureUrl,
             price: productData.price,
-            enCarrito: articuloAgregado + CantidadArticulos
         }
 
         if(CantidadArticulos > productData.stock){
@@ -36,23 +35,9 @@ export const ItemDetail = ({productData}) => {
                 icon: "error",
             });
         } else {
-            if(validateQty(cartItemObj)){
-                swal({
-                    title: "Elementos agregados a tu carrito",
-                    text: `Agregaste ${CantidadArticulos} artículo/s 😀`,
-                    icon: "success",
-                }).then(() => {
-                setArticuloAgregado(CantidadArticulos + articuloAgregado);
-                addItem(cartItemObj);
-                setValidar(true);
-            })
-            } else {
-                swal({
-                    title: "Sin stock",
-                    text: `Tenemos ${productData.stock} artículos disponibles 😔`,
-                    icon: "error",
-                })
-            }
+            setArticuloAgregado(CantidadArticulos + articuloAgregado);
+            addItem(cartItemObj);
+            setValidar(true);
         }
     })
 

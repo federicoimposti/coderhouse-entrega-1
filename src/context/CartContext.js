@@ -1,27 +1,46 @@
 import React, { useEffect, useState } from 'react'
+import swal from 'sweetalert';
 
 export const CartContext = React.createContext([]);
 
 export const CartContextContainer = ({defaultValue = [], children}) => {
 
     const [carrito, setCarrito] = useState(defaultValue)
-    const [qtyStock, setQtyStock] = useState()
 
     const addItem = ((cartItemObj) => {
 
         const existe = carrito.some( producto => producto.item === cartItemObj.item  );
-        console.log(carrito);
+
         if(existe){
             const productos = carrito.map( producto => {
                 if( producto.item === cartItemObj.item ) {
-                    producto.cantidad = producto.cantidad + cartItemObj.cantidad;
-                    return producto
+                    if((producto.cantidad + cartItemObj.cantidad) > producto.stock){
+                        swal({
+                            title: "Sin stock",
+                            text: `Tenemos ${cartItemObj.stock} artículo/s disponibles y ya añadiste ${producto.cantidad}.`,
+                            icon: "error",
+                        })
+                        return producto;
+                    } else {
+                        swal({
+                            title: "Elementos agregados a tu carrito",
+                            text: `Agregaste ${cartItemObj.cantidad} artículo/s 😀`,
+                            icon: "success",
+                        })
+                        producto.cantidad = producto.cantidad + cartItemObj.cantidad;
+                        return producto
+                    }
                 } else {
                     return producto; // retorna los objetos que no son los duplicados
                 }
             })
             setCarrito(productos);
         } else {
+            swal({
+                title: "Elementos agregados a tu carrito",
+                text: `Agregaste ${cartItemObj.cantidad} artículo/s 😀`,
+                icon: "success",
+            })
             setCarrito([...carrito, cartItemObj])
         }
     })
@@ -34,18 +53,9 @@ export const CartContextContainer = ({defaultValue = [], children}) => {
     const removeItems = (() => {
         setCarrito(defaultValue)
     })
-
-    const validateQty = ((cartItemObj) => {
-        
-        if(cartItemObj.enCarrito > cartItemObj.stock){
-            return false
-        } else {
-            return  true
-        }
-    })
     
     return(
-        <CartContext.Provider value={[carrito, setCarrito, addItem, removeItems, removeItem, validateQty]}>
+        <CartContext.Provider value={[carrito, setCarrito, addItem, removeItems, removeItem]}>
             {children}
         </CartContext.Provider>
     )

@@ -13,6 +13,17 @@ export const Item = ({item}) => {
     const [carrito, setCarrito, addItem] = useContext(CartContext);
 
     const onAdd = ((CantidadArticulos) => {
+
+        const cartItemObj = {
+            item: item.id,
+            cantidad: CantidadArticulos,
+            stock: item.stock,
+            title: item.title,
+            pictureUrl: item.pictureUrl,
+            price: item.price,
+        }
+
+
         if(CantidadArticulos > item.stock){
             swal({
                 title: "Sin stock",
@@ -25,31 +36,10 @@ export const Item = ({item}) => {
                 text: `Cantidad mínima: ${item.minQty} artículo/s 🤔`,
                 icon: "error",
             });
-        } else if ((CantidadArticulos + articuloAgregado) <= item.stock){
-            swal({
-                title: "Elementos agregados a tu carrito",
-                text: `Agregaste ${CantidadArticulos} artículo/s 😀`,
-                icon: "success",
-            }).then(() => {
-                setValidar(true);
-
-                const cartItemObj = {
-                    item: item.id,
-                    cantidad: CantidadArticulos,
-                    stock: item.stock,
-                    title: item.title,
-                    pictureUrl: item.pictureUrl,
-                    price: item.price
-                }
-
-                addItem(cartItemObj);
-            })
         } else {
-            swal({
-                title: "Sin stock",
-                text: `Tenemos ${item.stock} artículos disponibles y añadiste ${articuloAgregado} a tu carrito.`,
-                icon: "error",
-            });
+            setArticuloAgregado(CantidadArticulos + articuloAgregado);
+            addItem(cartItemObj);
+            setValidar(true);
         }
     })
 
