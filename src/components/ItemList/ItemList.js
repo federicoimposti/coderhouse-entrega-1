@@ -14,11 +14,7 @@ export const ItemList = ({productsData}) => {
 
     return (
         <>
-        {itemCat ? (
-            productsData && productsData.filter(product => product.categoria.includes(itemCat)).map(product => <Item key={product.id} item={product} />)
-        ) : (
-            productsData && productsData.map(product => <Item key={product.id} item={product} />)
-        )}
+        {productsData && productsData.map(product => <Item key={product.id} item={product} />)}
         </>
     )
 }

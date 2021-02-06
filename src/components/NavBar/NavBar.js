@@ -13,9 +13,9 @@ export const NavBar = () => {
                 </div>
                 <nav className='menuMain'>
                     <li><Link to={`/`}>Home</Link></li>
-                    <li><Link to={`/category/geek`}>Colección Geek</Link></li>
-                    <li><Link to={`/category/open-source`}>Colección Open Source</Link></li>
-                    <li><Link to={`/item/1`}>Modelo React 💙</Link></li>
+                    <li><Link to={`/category/mCpBp5UvMKOJKC3zFxEf`}>Colección Geek</Link></li>
+                    <li><Link to={`/category/OJu0PSaNe7QJ9GQ5HxzT`}>Colección Open Source</Link></li>
+                    <li><Link to={`/item/Kypl4yaBMsWDZCDBAU8T`}>Modelo React 💙</Link></li>
                     <li>Preguntas frecuentes</li>
                     <li>Contacto</li>
                 </nav>
