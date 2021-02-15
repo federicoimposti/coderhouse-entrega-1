@@ -72,3 +72,8 @@
     max-width: 75%;
     display: block;
 }
+
+a {
+    color: #000;
+    text-decoration: none;
+}

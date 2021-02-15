@@ -10,8 +10,6 @@ export const ItemListContainer = () => {
     const [loader, setLoader] = useState(true);
     const itemUrlCat = useParams();
 
-    console.log(itemUrlCat.slug)
-
     useEffect(() => {
         const db = getFirestore();
         const itemsCollection = db.collection('items');
@@ -29,7 +27,6 @@ export const ItemListContainer = () => {
                     ...doc.data()
                 })
             }))
-            
             setItemsData(items)
             setLoader(false);
         })
@@ -47,7 +44,6 @@ export const ItemListContainer = () => {
                     ...doc.data()
                 })
             }))
-            
             setItemsData(items)
             setLoader(false);
         })

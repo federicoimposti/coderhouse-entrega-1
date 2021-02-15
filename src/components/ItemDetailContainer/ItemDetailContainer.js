@@ -20,9 +20,8 @@ export const ItemDetailContainer = () => {
             }
             setItemData({id: doc.id, ...doc.data()})
             setLoader(false);
-            console.log(item)
         })
-    }, [])
+    }, [id])
 
     return (
         <>

@@ -1,6 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react'
 import { CartContext } from '../../context/CartContext'
 import './cartwidget.css'
+import {Link} from 'react-router-dom'
 import { FaShoppingBag } from "react-icons/fa";
 
 export const CartWidget = () => {
@@ -17,12 +18,14 @@ useEffect(() => {
 }, [carrito])
 
     return (
-        <div className="cart-widget">
-            <FaShoppingBag />
-            {carrito.length ? (
-                <div className="cart-qty">{itemsQty}</div>
-                ) : (null)
-            }
-        </div>
+        <Link to={`/cart/`}>
+            <div className="cart-widget">
+                <FaShoppingBag />
+                {carrito.length ? (
+                    <div className="cart-qty">{itemsQty}</div>
+                    ) : (null)
+                }
+            </div>
+        </Link>
     )
 }

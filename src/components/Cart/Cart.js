@@ -1,14 +1,16 @@
 import React, {useContext, useEffect, useState} from 'react'
 import {Link} from 'react-router-dom'
 import { CartContext } from '../../context/CartContext'
-import { FaTrashAlt } from "react-icons/fa";
-import { FaMinusCircle } from "react-icons/fa";
+import { FaMinusCircle, FaArrowCircleRight, FaTrashAlt } from "react-icons/fa";
 import './cart.css'
 
 export const Cart = () => {
 
     const [carrito, setCarrito, addItem, removeItems, removeItem] = useContext(CartContext);
     const [total, setTotal] = useState(0);
+
+    const [order, setOrder] = useState({});
+    const [orderId, setOrderId]  = useState('');
 
 useEffect(() => {
     if(carrito.length){
@@ -39,12 +41,12 @@ useEffect(() => {
                             <tr>
                                 <td className="item-detail">
                                     <span className="remove-item" onClick={() => {removeItem(producto.item)}}><FaMinusCircle /> </span>
-                                    <span><img src={producto.pictureUrl} /></span>
-                                    <span>{producto.title}</span>
+                                    <span><img key={producto.pictureUrl} src={producto.pictureUrl} /></span>
+                                    <span key={producto.title}>{producto.title}</span>
                                 </td>
-                                <td>{producto.cantidad}</td>
-                                <td>{producto.stock} Unidades</td>
-                                <td>${producto.price}</td>
+                                <td key={producto.cantidad}>{producto.cantidad}</td>
+                                <td key={producto.stock}>{producto.stock} Unidades</td>
+                                <td key={producto.price}>${producto.price}</td>
                             </tr>
                             )
                         }
@@ -58,7 +60,10 @@ useEffect(() => {
                         </tr>
                     </tfoot>
                     </table>
-                    <div className="remove-elements" onClick={removeItems}><FaTrashAlt /> <span>Vaciar carrito</span></div>
+                    <div className="bottom-controls">
+                        <div className="remove-elements" onClick={removeItems}><FaTrashAlt /> <span>Vaciar carrito</span></div>
+                        <Link to={`/checkout/`}><div className="checkout-button"><span>Finalizar Compra </span><FaArrowCircleRight /></div></Link>
+                    </div>
                 </div>
                 ) : (<h2>Tu carrito está vacío. <Link to={`/`}>Volver a la tienda</Link></h2>)}
                 
