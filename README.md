@@ -6,9 +6,9 @@ Proyecto realizado en el marco del curso de React JS realizado en Coderhouse. A 
 
 En mase ecom muestra un catálogo de remeras para coders. Cuenta con cuatro colecciones: Frontend, Backend, Open Source y Geek. Las funciones son las de una tienda online, en el contexto del curso no implementamos la finalización de la compra.
 
-### Gif
+### Gif video
 
-<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/b977e2afbe964c28afb79d2faf162e87" width="820" height="500vh" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+[Ver recorrido por la app](https://www.loom.com/share/b977e2afbe964c28afb79d2faf162e87)
 
 ## Deploy app link
 
