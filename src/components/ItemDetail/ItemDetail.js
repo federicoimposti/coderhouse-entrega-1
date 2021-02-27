@@ -42,20 +42,22 @@ export const ItemDetail = ({productData}) => {
     })
 
     return (
-        <>
+        <React.Fragment>
+        { productData && productData.title ? (
             <div className="product-detail-container">
-                <div className="image-gallery-container">
-                    <img src={productData && productData.pictureUrl} className="destacada" alt="producto" />
-                </div> 
-                <div className="item-details-container">
-                    <h2 className="item-title">{productData && productData.title}</h2>
-                    <span className="product-detail-price">${productData && productData.price}</span>
-                    <p className="item-description">{productData && productData.description}</p>
-                    <ItemCount stock={productData.stock} initial="1" agregarCarrito={onAdd} />
-                    { validar && 
-                    <Link to={`/cart/`}><div className="terminar-compra">Terminar mi compra</div></Link>}
-                </div>
+                    <div className="image-gallery-container">
+                        <img src={productData.pictureUrl} className="destacada" alt="producto" />
+                    </div> 
+                    <div className="item-details-container">
+                        <h2 className="item-title">{productData.title}</h2>
+                        <span className="product-detail-price">${productData.price}</span>
+                        <p className="item-description">{productData.description}</p>
+                        <ItemCount stock={productData.stock} initial="1" agregarCarrito={onAdd} />
+                        { validar && 
+                        <Link to={`/cart/`}><div className="terminar-compra">Terminar mi compra</div></Link>}
+                    </div>
             </div>
-        </>
+            ) : (<div>El item no existe. <Link to={`/`}>Volver a la tienda.</Link></div>)}
+        </React.Fragment>
     )
 }

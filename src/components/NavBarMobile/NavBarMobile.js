@@ -8,11 +8,12 @@ export const NavBarMobile = props => {
     // Pass on our props
     <Menu {...props}>
       <li className="menu-item"><Link to={`/`}>Home</Link></li>
-      <li className="menu-item"><Link to={`/category/mCpBp5UvMKOJKC3zFxEf`}>Colección Geek</Link></li>
-      <li className="menu-item"><Link to={`/category/OJu0PSaNe7QJ9GQ5HxzT`}>Colección Open Source</Link></li>
+      <li className="menu-item"><Link to={`/category/sfqBbU8qJZiEAmOBekEH`}>Frontend</Link></li>
+      <li className="menu-item"><Link to={`/category/FMnv6GZKzC4ZfhYgKLBx`}>Backend</Link></li>
+      <li className="menu-item"><Link to={`/category/OJu0PSaNe7QJ9GQ5HxzT`}>Open Source</Link></li>
+      <li className="menu-item"><Link to={`/category/mCpBp5UvMKOJKC3zFxEf`}>Geek</Link></li>
       <li className="menu-item"><Link to={`/item/Kypl4yaBMsWDZCDBAU8T`}>Modelo React 💙</Link></li>
-      <li className="menu-item">Preguntas frecuentes</li>
-      <li className="menu-item">Contacto</li>
+      <li className="menu-item"><Link to={`/item/TSlzyem0NEgb6lPnKCIf`}>Modelo Vue 💚</Link></li>
     </Menu>
   );
 };

@@ -46,8 +46,48 @@
 
 .containerNav li,
 .containerNav a {
-    padding: 0 8px;
+    padding: 0 15px;
     color: #000;
     text-decoration: none;
     list-style: none;
 }
+
+.desplegable ul {
+    opacity: 0;
+    z-index: 0;
+    transform: scale(0);
+    position: absolute;
+    width: 140px;
+    height: auto;
+    padding: 25px 2px;
+    text-align: center;
+    background: #383260c9;
+    border-radius: 0 0 10px 10px;
+    margin: 0;
+    transition: opacity .4s ease-in-out;
+    left: -8px;
+}
+
+.menuMain li.desplegable:hover>ul {
+    display:block;
+    opacity: 1;
+    transform: scale(1);
+}
+
+.desplegable {
+    position: relative;
+}
+
+.desplegable ul li {
+    color:#fff;
+    padding:0;
+}
+
+.desplegable ul li a {
+    color:#fff;
+    text-transform: none;
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 500;
+}
+

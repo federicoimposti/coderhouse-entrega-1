@@ -20,6 +20,25 @@
     border-spacing: 0 1em;
 }
 
+.cart-resume th {
+    padding: 0 10px;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+@media (min-width:768px){
+    .cart-resume {
+        table-layout: fixed;
+        
+    }
+
+    .cart-resume th {
+        font-size: 16px;
+        font-weight: 500;
+    }
+}
+
+
 .cart-resume thead {
     text-align: left;
 }
@@ -61,10 +80,12 @@
 .item-detail {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .item-detail span {
     padding: 0 15px 0 0;
+    
 }
 
 .item-detail img {

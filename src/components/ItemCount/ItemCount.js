@@ -31,7 +31,7 @@ export const ItemCount = ({stock, initial, agregarCarrito}) => {
     }
 
     return (
-            <>
+            <React.Fragment>
                 <div className="item-count">
                     <button type="button" defaultValue="-" onClick={restarCantidad}>-</button>
                     <span className="itemscount" size="1">{cantidadElegida}</span>
@@ -40,6 +40,6 @@ export const ItemCount = ({stock, initial, agregarCarrito}) => {
                 <div className="add-to-cart">
                     <button onClick={() => {agregarCarrito(cantidadElegida)}}>Agregar al carrito</button>
                 </div>
-            </>
+            </React.Fragment>
     )
 }

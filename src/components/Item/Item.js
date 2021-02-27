@@ -11,7 +11,7 @@ export const Item = ({item}) => {
     const [validar, setValidar] = useState(false);
     
     const [carrito, setCarrito, addItem] = useContext(CartContext);
-
+    
     const onAdd = ((CantidadArticulos) => {
 
         const cartItemObj = {
@@ -43,7 +43,7 @@ export const Item = ({item}) => {
     })
 
     return (
-        <>
+        <React.Fragment>
             <div className="producto">
                 <Link to={`/item/${item.id}`}>
                     <img src={item.pictureUrl} className="destacada" alt="producto" />
@@ -60,6 +60,6 @@ export const Item = ({item}) => {
                     </div>
                 
             </div>
-        </>
+        </React.Fragment>
     )
 }

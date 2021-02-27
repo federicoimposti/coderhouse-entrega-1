@@ -27,9 +27,9 @@ export const ItemDetailContainer = () => {
         <>
             <div className="main-container">
                 {loader ? 
-                    <div class="spinner">
-                        <div class="cube1"></div>
-                        <div class="cube2"></div>
+                    <div className="spinner">
+                        <div className="cube1"></div>
+                        <div className="cube2"></div>
                     </div> 
                         : 
                 <ItemDetail productData={itemData} />}

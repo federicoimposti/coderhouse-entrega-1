@@ -1,3 +1,12 @@
+.main-container-checkout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    flex-wrap: wrap;
+    margin: 180px 20px 0;
+}
+
 .checkout {
     display: flex;
     justify-content: center;
@@ -16,11 +25,18 @@
 }
 
 .checkout input, textarea {
-    width: 45%;
-    margin: 10px;
+    width:100%;
+    margin: 10px 10px 0 0;
     padding:10px;
     box-sizing: border-box;
     font-family: ubuntu;
+}
+
+@media (min-width:768px){
+    .checkout input {
+        width: 45%;
+        margin: 10px;
+    }
 }
 
 .checkout button {

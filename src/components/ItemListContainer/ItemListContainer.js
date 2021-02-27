@@ -9,11 +9,11 @@ export const ItemListContainer = () => {
     const [itemsData, setItemsData] = useState([]);
     const [loader, setLoader] = useState(true);
     const itemUrlCat = useParams();
-
+    
     useEffect(() => {
         const db = getFirestore();
         const itemsCollection = db.collection('items');
-        const itemsLimit = itemsCollection.limit(3);
+        const itemsLimit = itemsCollection.limit(8);
         setLoader(true);
         if(itemUrlCat.slug === undefined){
             itemsLimit.get().then((querySnapshot) => {
@@ -52,17 +52,16 @@ export const ItemListContainer = () => {
     }, [itemUrlCat])
 
     return (
-        <>
+        <React.Fragment>
             <div className="main-container">
                 {loader ? 
-                    <div class="spinner">
-                        <div class="cube1"></div>
-                        <div class="cube2"></div>
+                    <div className="spinner">
+                        <div className="cube1"></div>
+                        <div className="cube2"></div>
                     </div> 
                         : 
                 <ItemList productsData={itemsData} />}
             </div>
-            
-        </>
+        </React.Fragment>
     )
 }

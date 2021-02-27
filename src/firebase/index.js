@@ -1,8 +1,10 @@
 import firebase from 'firebase/app';
 import '@firebase/firestore';
 
+const APIKEY = process.env.REACT_APP_FIREBASE_APIKEY;
+
 const app = firebase.initializeApp({
-        apiKey: "AIzaSyDrlFc1RHcE6vjlajAfiX-CbnhDYVdH_wo",
+        apiKey: APIKEY,
         authDomain: "coderhouse-ecom-react.firebaseapp.com",
         projectId: "coderhouse-ecom-react",
         storageBucket: "coderhouse-ecom-react.appspot.com",
